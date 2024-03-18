@@ -5,6 +5,7 @@ import Cookies from "universal-cookie";
 import HospitalIcon from '../assets/hospital.png'
 import Logout from '../assets/logout.png'
 import {ChannelSearch} from "./index";
+import TeamChannelList from "./TeamChannelList";
 const SideBar = () => (
     <div className="channel-list__sidebar">
         <div className="channel-list__sidebar__icon1">
@@ -33,6 +34,15 @@ const ChannelListContainer = () => {
             <div className="channel-list__list__wrapper">
                 <CompanyHeader />
                 <ChannelSearch />
+                <ChannelList
+                    filters={{}}
+                    channelRenderFilterFn={()=>{}}
+                    List={(listProps) => (
+                        <TeamChannelList
+                            {...listProps}
+                        />
+                    )}
+                />
             </div>
         </>
     );
