@@ -1,11 +1,10 @@
 import React from 'react';
 import {ChannelList, useChatContext} from "stream-chat-react";
-// import {ChannelSearch, TeamChannelList, TeamChannelPreview } from "./";
+import {ChannelSearch, TeamChannelList, TeamChannelPreview } from "./";
 import Cookies from "universal-cookie";
 import HospitalIcon from '../assets/hospital.png'
 import Logout from '../assets/logout.png'
-import {ChannelSearch} from "./index";
-import TeamChannelList from "./TeamChannelList";
+
 const SideBar = () => (
     <div className="channel-list__sidebar">
         <div className="channel-list__sidebar__icon1">
@@ -30,16 +29,41 @@ const CompanyHeader = () => (
 const ChannelListContainer = () => {
     return (
         <>
-            <SideBar />
+            <SideBar/>
             <div className="channel-list__list__wrapper">
-                <CompanyHeader />
-                <ChannelSearch />
+                <CompanyHeader/>
+                <ChannelSearch/>
                 <ChannelList
                     filters={{}}
-                    channelRenderFilterFn={()=>{}}
+                    channelRenderFilterFn={() => {
+                    }}
                     List={(listProps) => (
                         <TeamChannelList
                             {...listProps}
+                            type="team"
+                        />
+                    )}
+                    Preview={(previewProps) => (
+                        <TeamChannelPreview
+                            {...previewProps}
+                            type = 'team'
+                        />
+                    )}
+                />
+                <ChannelList
+                    filters={{}}
+                    channelRenderFilterFn={() => {
+                    }}
+                    List={(listProps) => (
+                        <TeamChannelList
+                            {...listProps}
+                            type="messaging"
+                        />
+                    )}
+                    Preview={(previewProps) => (
+                        <TeamChannelPreview
+                            {...previewProps}
+                            type = 'messaging'
                         />
                     )}
                 />
